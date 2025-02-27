@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to all collections
+    match /{document=**} {
+      allow read: if true;
+    }
+    
+    // Allow write access to status_logs collection
+    match /status_logs/{document} {
+      allow write: if true;
+    }
+    
+    // Allow write access to configuration collection
+    match /configuration/{document} {
+      allow write: if true;
+    }
+  }
+}
